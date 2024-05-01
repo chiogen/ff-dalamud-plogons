@@ -1,22 +1,22 @@
-﻿using Dalamud.Game.Command;
+using Dalamud.Game.Command;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using System.IO;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
-using SamplePlugin.Windows;
+using GearsetHelper.Windows;
 
-namespace SamplePlugin;
+namespace GearsetHelper;
 
 public sealed class Plugin : IDalamudPlugin
 {
-    private const string CommandName = "/pmycommand";
+    private const string CommandName = "/gearsethelper";
 
     private DalamudPluginInterface PluginInterface { get; init; }
     private ICommandManager CommandManager { get; init; }
     public Configuration Configuration { get; init; }
 
-    public readonly WindowSystem WindowSystem = new("SamplePlugin");
+    public readonly WindowSystem WindowSystem = new("GearsetHelper");
     private ConfigWindow ConfigWindow { get; init; }
     private MainWindow MainWindow { get; init; }
 
@@ -45,7 +45,7 @@ public sealed class Plugin : IDalamudPlugin
 
         CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
-            HelpMessage = "A useful message to display in /xlhelp"
+            HelpMessage = "A test to auto sort gearsets"
         });
 
         PluginInterface.UiBuilder.Draw += DrawUI;
