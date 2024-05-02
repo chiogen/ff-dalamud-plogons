@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using Dalamud.Interface.Internal;
 using Dalamud.Interface.Utility;
@@ -52,5 +52,10 @@ public class MainWindow : Window, IDisposable
         {
             ImGui.Text("Image not found.");
         }
+
+        ImGui.Spacing();
+        
+        string message = Gearsets.List();
+        ImGui.Text(message);
     }
 }
