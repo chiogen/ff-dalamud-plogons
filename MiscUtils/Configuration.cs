@@ -2,7 +2,7 @@ using Dalamud.Configuration;
 using Dalamud.Plugin;
 using System;
 
-namespace HighFpsPhysicsFix;
+namespace MiscUtils;
 
 [Serializable]
 public class Configuration : IPluginConfiguration

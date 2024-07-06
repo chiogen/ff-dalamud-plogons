@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MitView", "MitView\MitView.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighFpsPhysicsFix", "HighFpsPhysicsFix\HighFpsPhysicsFix.csproj", "{A0E57B9D-B614-4366-AA45-1FF8217CA0D6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiscUtils", "MiscUtils\MiscUtils.csproj", "{C3C8CB80-4D3E-4C6F-9554-DD764595D8D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{A0E57B9D-B614-4366-AA45-1FF8217CA0D6}.Debug|x64.Build.0 = Debug|x64
 		{A0E57B9D-B614-4366-AA45-1FF8217CA0D6}.Release|x64.ActiveCfg = Release|x64
 		{A0E57B9D-B614-4366-AA45-1FF8217CA0D6}.Release|x64.Build.0 = Release|x64
+		{C3C8CB80-4D3E-4C6F-9554-DD764595D8D7}.Debug|x64.ActiveCfg = Debug|x64
+		{C3C8CB80-4D3E-4C6F-9554-DD764595D8D7}.Debug|x64.Build.0 = Debug|x64
+		{C3C8CB80-4D3E-4C6F-9554-DD764595D8D7}.Release|x64.ActiveCfg = Release|x64
+		{C3C8CB80-4D3E-4C6F-9554-DD764595D8D7}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

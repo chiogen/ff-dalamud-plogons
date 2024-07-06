@@ -8,11 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HighFpsPhysicsFix;
+namespace MiscUtils;
 
 internal class Service
 {
-    public static Physics PhysicsModification = null!;
     public static Configuration Settings = null!;
     public static WindowSystem WindowSystem = new("HighFPSPhysics");
     [PluginService] public static IChatGui Chat { get; private set; } = null!;

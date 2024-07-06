@@ -4,13 +4,13 @@ using Dalamud.Plugin;
 using System.IO;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
-using HighFpsPhysicsFix.Windows;
+using MiscUtils.Windows;
 
-namespace HighFpsPhysicsFix;
+namespace MiscUtils;
 
 public sealed class Plugin : IDalamudPlugin
 {
-    private const string CommandName = "/physics";
+    private const string CommandName = "/miscutils";
 
     public Plugin(IDalamudPluginInterface pluginInterface, IFramework framework)
     {
@@ -19,14 +19,9 @@ public sealed class Plugin : IDalamudPlugin
         Service.Settings = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
         Service.Settings.Initialize(pluginInterface);
 
-        Service.PhysicsModification = new Physics(framework);
-
         Service.Commands.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
-            HelpMessage = "Open Configuration Window\n" +
-                          "/physics on - Enable Physics Change\n" +
-                          "/physics off - Disable Physics Change\n" +
-                          "/physics t - Toggle Physics Change"
+            HelpMessage = "Open Configuration Window\n"
         });
 
         Service.WindowSystem.AddWindow(new ConfigurationWindow());
@@ -35,14 +30,12 @@ public sealed class Plugin : IDalamudPlugin
         Service.PluginInterface.UiBuilder.OpenConfigUi += () => Service.WindowSystem.Windows[0].IsOpen = true;
     }
 
-    public string Name => "High FPS Physics Fix";
+    public string Name => "Misc Utils";
 
     public void Dispose()
     {
         Service.Commands.RemoveHandler(CommandName);
         Service.WindowSystem.RemoveAllWindows();
-
-        Service.PhysicsModification.Dispose();
     }
 
     private void OnCommand(string command, string args)
@@ -53,25 +46,6 @@ public sealed class Plugin : IDalamudPlugin
         {
             case "":
                 configWindow.IsOpen = !configWindow.IsOpen;
-                break;
-
-            case "on":
-                Service.PhysicsModification.Enable();
-                break;
-
-            case "off":
-                Service.PhysicsModification.Disable();
-                break;
-
-            case "t":
-                if (Service.PhysicsModification.GetStatus())
-                {
-                    Service.PhysicsModification.Disable();
-                }
-                else
-                {
-                    Service.PhysicsModification.Enable();
-                }
                 break;
         }
     }
