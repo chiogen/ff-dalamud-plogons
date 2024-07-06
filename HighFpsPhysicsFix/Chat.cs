@@ -19,4 +19,14 @@ internal static class Chat
 
         Service.Chat.Print(stringBuilder.BuiltString);
     }
+    public static void Error(string message)
+    {
+        var stringBuilder = new SeStringBuilder();
+        stringBuilder.AddUiForeground(45);
+        stringBuilder.AddText($"[HighFPSPhysics] [Error] ");
+        stringBuilder.AddUiForegroundOff();
+        stringBuilder.AddText(message);
+
+        Service.Chat.Print(stringBuilder.BuiltString);
+    }
 }

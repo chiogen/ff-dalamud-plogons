@@ -77,9 +77,7 @@ internal class Physics : IDisposable
     {
         var currentTick = DateTime.Now.Ticks;
         while (currentTick > _currentSlice!.EndTick)
-        {
             _currentSlice.Update(_expectedFrameTime);
-        }
 
         _executePhysics = _currentSlice.ShouldRunPhysics();
     }
@@ -87,39 +85,37 @@ internal class Physics : IDisposable
     private IntPtr PhysicsSkip(IntPtr a1, IntPtr a2)
     {
         if (_executePhysics)
-        {
             return _physicsSkipHook!.Original(a1, a2);
-        }
         else
-        {
             return _frameworkPointer;
-        }
     }
 
     private record TimeSlice
     {
         public TimeSlice(long startTick, long sliceLength)
         {
-            _startTick = startTick;
-            _sliceLength = sliceLength;
+            this.startTick = startTick;
+            this.sliceLength = sliceLength;
         }
 
-        private long _sliceLength;
-        private long _startTick;
-        private bool _ranPhysics;
-        public long EndTick => _startTick + _sliceLength;
+        private long sliceLength;
+        private long startTick;
+        private bool ranPhysics = false;
+        public long EndTick => startTick + sliceLength;
 
         public void Update(long sliceLength)
         {
-            _startTick = EndTick + 1;
-            _sliceLength = sliceLength;
-            _ranPhysics = false;
+            startTick = EndTick + 1;
+            this.sliceLength = sliceLength;
+            ranPhysics = false;
         }
 
         public bool ShouldRunPhysics()
         {
-            if (_ranPhysics) return false;
-            _ranPhysics = true;
+            if (ranPhysics)
+                return false;
+
+            ranPhysics = true;
             return true;
         }
     }
