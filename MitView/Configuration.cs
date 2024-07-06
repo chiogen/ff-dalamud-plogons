@@ -2,21 +2,24 @@ using Dalamud.Configuration;
 using Dalamud.Plugin;
 using System;
 
-namespace GearsetHelper;
+namespace MitView;
 
 [Serializable]
 public class Configuration : IPluginConfiguration
 {
     public int Version { get; set; } = 0;
 
-    public bool IsConfigWindowMovable { get; set; } = true;
-    public bool SomePropertyToBeSavedAndWithADefault { get; set; } = true;
+    public float XOffset { get; set; } = 0f;
+    public float YOffset { get; set; } = 0f;
+    public float FontSize { get; set; } = 1f;
+    public bool ShowEffectiveHP { get; set; } = false;
+    public bool ShowDebug { get; set; } = false;
 
     // the below exist just to make saving less cumbersome
     [NonSerialized]
-    private DalamudPluginInterface? PluginInterface;
+    private IDalamudPluginInterface? PluginInterface;
 
-    public void Initialize(DalamudPluginInterface pluginInterface)
+    public void Initialize(IDalamudPluginInterface pluginInterface)
     {
         PluginInterface = pluginInterface;
     }
