@@ -14,7 +14,7 @@ namespace MitView
         public void Reset() { MagicalMitAmount = PhysicalMitAmount = 0; }
     }
 
-    internal class Mitigation 
+    internal class Mitigation
     {
         public uint Id { get; private set; }
         public MitigationAmount MitAmount { get; private set; } = new MitigationAmount();
@@ -86,7 +86,7 @@ namespace MitView
     }
     internal class MitigationDictionary
     {
-        static private readonly Dictionary<uint, Mitigation> MitigationIds = new() 
+        private static readonly Dictionary<uint, Mitigation> MitigationIds = new()
         {
             {   74, new Mitigation(  74, 30, 0) }, // Sentinel
             {   89, new Mitigation(  89, 30, 0) }, // Vengeance
@@ -133,12 +133,12 @@ namespace MitView
             { 3003, new Mitigation(3003, 10, 0) }, // Holos
         };
 
-        static public bool IsMitigation(uint id) 
+        public static bool IsMitigation(uint id)
         {
             return MitigationIds.ContainsKey(id);
         }
 
-        static public bool TryGetMitigation(uint id, out Mitigation mit) 
+        public static bool TryGetMitigation(uint id, out Mitigation mit)
         {
             return MitigationIds.TryGetValue(id, out mit);
         }

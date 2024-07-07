@@ -28,6 +28,5 @@ internal class ConfigurationWindow : Window
     public override void Draw()
     {
         
-
     }
 }

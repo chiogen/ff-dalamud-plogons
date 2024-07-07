@@ -16,8 +16,4 @@
       <Visible>false</Visible>
     </Content>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Modules\" />
-  </ItemGroup>
 </Project>
