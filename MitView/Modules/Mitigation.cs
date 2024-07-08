@@ -4,15 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MitView
+namespace MitView.Modules
 {
-    internal class MitigationAmount
-    {
-        public float PhysicalMitAmount { get; set; } = 0;
-        public float MagicalMitAmount { get; set; } = 0;
-
-        public void Reset() { MagicalMitAmount = PhysicalMitAmount = 0; }
-    }
 
     internal class Mitigation
     {
