@@ -25,4 +25,5 @@ internal class Service
     [PluginService] public static ITargetManager TargetManager { get; private set; }
     [PluginService] public static IDataManager DataManager { get; private set; }
     [PluginService] public static IGameInteropProvider GameInteropProvider { get; private set; }
+    [PluginService] public static IChatGui Chat {  get; private set; }
 }

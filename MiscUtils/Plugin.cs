@@ -19,7 +19,7 @@ public sealed class Plugin : IDalamudPlugin
         Service.Settings = pluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
         Service.Settings.Initialize(pluginInterface);
 
-        Service.Commands.AddHandler(CommandName, new CommandInfo(OnCommand)
+        Service.CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
         {
             HelpMessage = "Open Configuration Window\n"
         });
@@ -34,7 +34,7 @@ public sealed class Plugin : IDalamudPlugin
 
     public void Dispose()
     {
-        Service.Commands.RemoveHandler(CommandName);
+        Service.CommandManager.RemoveHandler(CommandName);
         Service.WindowSystem.RemoveAllWindows();
     }
 

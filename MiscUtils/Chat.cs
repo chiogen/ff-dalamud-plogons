@@ -26,7 +26,6 @@ internal static class Chat
         stringBuilder.AddText($"[MiscUtils] [Error] ");
         stringBuilder.AddUiForegroundOff();
         stringBuilder.AddText(message);
-
         Service.Chat.Print(stringBuilder.BuiltString);
     }
 }
